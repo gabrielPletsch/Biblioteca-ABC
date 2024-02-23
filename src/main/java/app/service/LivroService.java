@@ -64,22 +64,23 @@ public class LivroService {
 		return null;
 	}
 	
-	public String delete(long idLivro) {
+	public boolean delete(long idLivro) {
 
-	
+		
 		lista = this.listAll();
 
 		if(lista != null)
-			for(int i=0; i<lista.size(); i++) {
-				if(lista.get(i).getId() == idLivro) {
-					lista.remove(lista.get(i));
-					return "Apagado";
+			for(Livro livro : this.lista) {
+				if(livro.getId() == idLivro) {
+					this.lista.remove(livro);
+					return true;
 				}
 			}
 
-		return "Não encontrado para deletar";
+		return false;
 
 	}
+
 
 }
 	

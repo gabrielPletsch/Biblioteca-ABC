@@ -62,21 +62,22 @@ public class BibliotecaService {
 
 	}
 
-	public String delete(long idBiblioteca) {
+	public boolean delete(long idBiblioteca) {
 
 		
 		lista = this.listAll();
 
 		if(lista != null)
-			for(int i=0; i<lista.size(); i++) {
-				if(lista.get(i).getId() == idBiblioteca) {
-					lista.remove(lista.get(i));
-					return "Deletado";
+			for(Biblioteca biblioteca : this.lista) {
+				if(biblioteca.getId() == idBiblioteca) {
+					this.lista.remove(biblioteca);
+					return true;
 				}
 			}
 
-		return "Não encontrado";
+		return false;
 
 	}
+
 	
 }

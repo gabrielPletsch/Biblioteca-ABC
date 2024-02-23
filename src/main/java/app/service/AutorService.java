@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import app.entity.Autor;
 
+
 @Service
 public class AutorService {
 	List<Autor> lista = new ArrayList<>();
@@ -62,21 +63,22 @@ public class AutorService {
 
 	}
 
-	public String delete(long idAutor) {
+	public boolean delete(long idAutor) {
 
+		
 		lista = this.listAll();
 
 		if(lista != null)
-			for(int i=0; i<lista.size(); i++) {
-				if(lista.get(i).getId() == idAutor) {
-					lista.remove(lista.get(i));
-					return "Deletado";
+			for(Autor autor : this.lista) {
+				if(autor.getId() == idAutor) {
+					this.lista.remove(autor);
+					return true;
 				}
 			}
 
-		return "Não há nada para deletar";
+		return false;
 
-		}
 	}
+}
 
 
