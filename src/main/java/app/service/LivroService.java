@@ -36,11 +36,15 @@ public class LivroService {
 
 		Livro livro = new Livro(1, "0123456789", "HarryPotter","ABCDEFGHIJK",1997,234);
 		Livro livro2 = new Livro(2, "056832495","SenhorDosAneis", "HIJKLMNO",1954,432);
-		Livro livro3 = new Livro(3, "40028922","StarWars", "PQRSTUVWXYZ", 1977, 324);
+		Livro livro3 = new Livro(3, "400289223","StarWars", "PQRSTUVWXYZ", 1977, 324);
+		Livro livro4 = new Livro(4, "902345345","StarTrek", "SDAFSDFFD",1967, 243);
+		Livro livro5 = new Livro(5, "532346433","HungerGames", "FDSOSDFG", 2008, 324);
 
 		lista.add(livro);
 		lista.add(livro2);
 		lista.add(livro3);
+		lista.add(livro4);
+		lista.add(livro5);
 
 		return lista;
 
