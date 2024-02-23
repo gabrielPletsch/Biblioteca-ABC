@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import app.entity.LivroEntity;
+import app.entity.Livro;
 import app.service.LivroService;
 
 @RestController
@@ -25,11 +25,11 @@ public class LivroController {
 	private LivroService livroService;
 	
 	@PostMapping("/save")
-	public ResponseEntity<String> save(@RequestBody LivroEntity livroEntity) {
+	public ResponseEntity<String> save(@RequestBody Livro livro) {
 		
 		try {
 			
-			String mensagem = this.livroService.Save(livroEntity);
+			String mensagem = this.livroService.Save(livro);
 			return new ResponseEntity<String>(mensagem, HttpStatus.CREATED);
 			
 		} catch (Exception e) {
@@ -39,11 +39,11 @@ public class LivroController {
 	}
 	
 	@PutMapping("/update/{idBiblioteca}")
-	public ResponseEntity<String> update(@RequestBody LivroEntity livroEntity, @PathVariable int id) {
+	public ResponseEntity<String> update(@RequestBody Livro livro, @PathVariable int id) {
 		
 		try {
 			
-			String mensagem = this.livroService.update(id, livroEntity);
+			String mensagem = this.livroService.update(id, livro);
 			return new ResponseEntity<String>(mensagem, HttpStatus.CREATED);
 			
 		} catch (Exception e) {
@@ -55,11 +55,11 @@ public class LivroController {
 	}
 	
 	@GetMapping("/listAll")
-	public ResponseEntity<List<LivroEntity>> listAll (){
+	public ResponseEntity<List<Livro>> listAll (){
 		
 		try {
 			
-			List<LivroEntity> lista = this.livroService.listAll();
+			List<Livro> lista = this.livroService.listAll();
 			return new ResponseEntity<>(lista, HttpStatus.CREATED);
 			
 		} catch (Exception e) {
@@ -70,12 +70,12 @@ public class LivroController {
 	}
 	
 	@GetMapping("/findById/{idLivro}")
-	public ResponseEntity<LivroEntity> findById(@PathVariable long idLivro){
+	public ResponseEntity<Livro> findById(@PathVariable long idLivro){
 		
 		try {
 			
-			LivroEntity livroEntity = this.livroService.findById(idLivro);
-			return new ResponseEntity<>(livroEntity, HttpStatus.OK);
+			Livro livro = this.livroService.findById(idLivro);
+			return new ResponseEntity<>(livro, HttpStatus.OK);
 			
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);

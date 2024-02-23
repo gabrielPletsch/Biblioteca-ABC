@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 
-public class EditoraEntity {
+public class Editora {
 	
 	private long id;
 	private String nome;

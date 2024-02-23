@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import app.entity.BibliotecaEntity;
+import app.entity.Biblioteca;
 import app.service.BibliotecaService;
 
 @RestController
@@ -25,11 +25,11 @@ public class BibliotecaController {
 	private BibliotecaService bibliotecaService;
 	
 	@PostMapping("/save")
-	public ResponseEntity<String> save(@RequestBody BibliotecaEntity bibliotecaEntity) {
+	public ResponseEntity<String> save(@RequestBody Biblioteca biblioteca) {
 		
 		try {
 			
-			String mensagem = this.bibliotecaService.save(bibliotecaEntity);
+			String mensagem = this.bibliotecaService.save(biblioteca);
 			return new ResponseEntity<String>(mensagem, HttpStatus.CREATED);
 			
 		} catch (Exception e) {
@@ -41,11 +41,11 @@ public class BibliotecaController {
 	}
 	
 	@PutMapping("/update/{idBiblioteca}")
-	public ResponseEntity<String> update(@RequestBody BibliotecaEntity bibliotecaEntity, @PathVariable int id) {
+	public ResponseEntity<String> update(@RequestBody Biblioteca biblioteca, @PathVariable int id) {
 		
 		try {
 			
-			String mensagem = this.bibliotecaService.update(id, bibliotecaEntity);
+			String mensagem = this.bibliotecaService.update(id, biblioteca);
 			return new ResponseEntity<String>(mensagem, HttpStatus.CREATED);
 			
 		} catch (Exception e) {
@@ -57,11 +57,11 @@ public class BibliotecaController {
 	}
 	
 	@GetMapping("/listAll")
-	public ResponseEntity<List<BibliotecaEntity>> listAll (){
+	public ResponseEntity<List<Biblioteca>> listAll (){
 		
 		try {
 			
-			List<BibliotecaEntity> lista = this.bibliotecaService.listAll();
+			List<Biblioteca> lista = this.bibliotecaService.listAll();
 			return new ResponseEntity<>(lista, HttpStatus.CREATED);
 			
 		} catch (Exception e) {
@@ -73,12 +73,12 @@ public class BibliotecaController {
 	}
 	
 	@GetMapping("/findById/{idBiblioteca}")
-	public ResponseEntity<BibliotecaEntity> findById(@PathVariable long idBiblioteca){
+	public ResponseEntity<Biblioteca> findById(@PathVariable long idBiblioteca){
 		
 		try {
 			
-			BibliotecaEntity bibliotecaEntity = this.bibliotecaService.findById(idBiblioteca);
-			return new ResponseEntity<>(bibliotecaEntity, HttpStatus.OK);
+			Biblioteca biblioteca = this.bibliotecaService.findById(idBiblioteca);
+			return new ResponseEntity<>(biblioteca, HttpStatus.OK);
 			
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);

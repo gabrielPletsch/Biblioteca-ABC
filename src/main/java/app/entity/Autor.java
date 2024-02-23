@@ -7,12 +7,11 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class LivroEntity {
+
+public class Autor {
 	
 	private long id;
-	private String ISSN;
-	private String titulo;
-	private String sinopse;
-	private int ano;
-	private int numeroDePagina;
+	private String nome;
+	private String cpf;
+	private int idade;
 }

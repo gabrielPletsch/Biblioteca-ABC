@@ -8,10 +8,10 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 
-public class AutorEntity {
+public class Biblioteca {
 	
 	private long id;
 	private String nome;
-	private String cpf;
-	private int idade;
+	private String telefone;
+
 }
