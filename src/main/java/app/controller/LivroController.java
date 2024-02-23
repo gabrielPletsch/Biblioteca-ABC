@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import app.entity.Carro;
 import app.entity.Livro;
 import app.service.LivroService;
 
@@ -48,7 +48,7 @@ public class LivroController {
 			
 		} catch (Exception e) {
 			
-			return new ResponseEntity<String>("Deu esse erro aqui: "+e.getMessage(), HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<String>("Erro: "+e.getMessage(), HttpStatus.BAD_REQUEST);
 			
 		}
 		
@@ -69,7 +69,7 @@ public class LivroController {
 		}
 	}
 	
-	@GetMapping("/findById/{idLivros}")
+	@GetMapping("/findById/{idLivro}")
 	public ResponseEntity<Livro> findById(@PathVariable long idLivro){
 		
 		try {
@@ -79,6 +79,20 @@ public class LivroController {
 			
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+		}
+		
+	}
+	
+	@DeleteMapping("/delete/{idLivro}")
+	public ResponseEntity<String> delete(@PathVariable long idLivro){
+		
+		try {
+			
+			String mensagem = this.livroService.delete(idLivro);
+			return new ResponseEntity<>(mensagem, HttpStatus.OK);
+			
+		} catch (Exception e) {
+			return new ResponseEntity<String>("Erro: "+e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
 		
 	}
