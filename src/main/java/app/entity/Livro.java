@@ -10,6 +10,9 @@ import lombok.Setter;
 public class Livro {
 	
 	private long id;
-	private String nome;
-	private String telefone;
+	private String ISSN;
+	private String titulo;
+	private String sinopse;
+	private int ano;
+	private int numeroDePagina;
 }

@@ -13,7 +13,7 @@ public class LivroService {
 	
 	public String Save(Livro livro) {
 		lista.add(livro);
-		return livro.getNome()+ "Foi salvo com sucesso!!";
+		return livro.getTitulo()+ "Foi salvo com sucesso!!";
 	}
 	
 	
@@ -25,7 +25,7 @@ public class LivroService {
 			for(int i=0; i<lista.size(); i++) {
 				if(lista.get(i).getId() == id) {
 					lista.set(i, livro);
-					return livro.getNome()+ "Sucesso!!";
+					return livro.getTitulo()+ "Sucesso!!";
 				}
 			}
 
@@ -34,9 +34,9 @@ public class LivroService {
 	
 	public List<Livro> listAll(){
 
-		Livro livro = new Livro(1, "HarryPotter", "6452423535");
-		Livro livro2 = new Livro(2, "SenhorDosAneis", "53434253");
-		Livro livro3 = new Livro(3, "StarWars", "45 9903243254");
+		Livro livro = new Livro(1, "0123456789", "HarryPotter","ABCDEFGHIJK",1997,234);
+		Livro livro2 = new Livro(2, "056832495","SenhorDosAneis", "HIJKLMNO",1954,432);
+		Livro livro3 = new Livro(3, "40028922","StarWars", "PQRSTUVWXYZ", 1977, 324);
 
 		lista.add(livro);
 		lista.add(livro2);
