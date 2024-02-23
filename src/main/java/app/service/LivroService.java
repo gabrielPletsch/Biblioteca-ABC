@@ -25,11 +25,11 @@ public class LivroService {
 			for(int i=0; i<lista.size(); i++) {
 				if(lista.get(i).getId() == id) {
 					lista.set(i, livro);
-					return livro.getNome()+ " alterado com sucesso";
+					return livro.getNome()+ "Sucesso!!";
 				}
 			}
 
-		return "carro não encontrado para alterar";
+		return "Não foi possivel encontrar o livro escolhido";
 	}
 	
 	public List<Livro> listAll(){
@@ -58,6 +58,22 @@ public class LivroService {
 			}
 
 		return null;
+	}
+	
+	public String delete(long idLivro) {
+
+	
+		lista = this.listAll();
+
+		if(lista != null)
+			for(int i=0; i<lista.size(); i++) {
+				if(lista.get(i).getId() == idLivro) {
+					lista.remove(lista.get(i));
+					return "Apagado";
+				}
+			}
+
+		return "Não encontrado para deletar";
 
 	}
 
