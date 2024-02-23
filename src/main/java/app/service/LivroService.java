@@ -5,14 +5,14 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import app.entity.Livro;
+import app.entity.Livros;
 
 @Service
 
 public class LivroService {
-	List<Livro> lista = new ArrayList<>();
+	List<Livros> lista = new ArrayList<>();
 	
-	public String Save(Livro livro) {
+	public String Save(Livros livro) {
 		lista.add(livro);
 		return livro.getNome()+ "Foi salvo com sucesso!!";
 	}

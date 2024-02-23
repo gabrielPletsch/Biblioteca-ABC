@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class Livro {
+public class Livros {
 	
 	private long id;
 	private String Nome;
