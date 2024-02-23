@@ -1,4 +1,4 @@
-package biblioteca.entity;
+package app.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,6 +10,6 @@ import lombok.Setter;
 public class Livro {
 	
 	private long id;
-	private String nome;
-	private String telefone;
+	private String Nome;
+	private String Telefone;
 }
