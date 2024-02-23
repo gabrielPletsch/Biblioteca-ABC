@@ -47,4 +47,37 @@ public class BibliotecaService {
 		return lista;
 
 	}
+	
+	public Biblioteca findById(long idBiblioteca) {
+
+		lista = this.listAll();
+
+		if(lista != null)
+			for(int i=0; i<lista.size(); i++) {
+				if(lista.get(i).getId() == idBiblioteca) {
+					return lista.get(i);
+				}
+			}
+
+		return null;
+
+	}
+
+	public String delete(long idBiblioteca) {
+
+		
+		lista = this.listAll();
+
+		if(lista != null)
+			for(int i=0; i<lista.size(); i++) {
+				if(lista.get(i).getId() == idBiblioteca) {
+					lista.remove(lista.get(i));
+					return "Deletado";
+				}
+			}
+
+		return "Não encontrado";
+
+	}
+	
 }
