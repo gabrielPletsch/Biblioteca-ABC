@@ -9,7 +9,7 @@ import lombok.Setter;
 @AllArgsConstructor
 
 public class Editora {
-	
+
 	private long id;
 	private String nome;
 	private String endereco;

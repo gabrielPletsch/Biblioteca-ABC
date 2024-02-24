@@ -9,7 +9,7 @@ import lombok.Setter;
 @AllArgsConstructor
 
 public class Autor {
-	
+
 	private long id;
 	private String nome;
 	private String cpf;

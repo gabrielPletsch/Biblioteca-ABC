@@ -5,31 +5,30 @@ import java.util.List;
 
 import app.entity.Biblioteca;
 
-
-
 public class BibliotecaService {
 	List<Biblioteca> lista = new ArrayList<>();
 
 	public String save(Biblioteca biblioteca) {
 		lista.add(biblioteca);
-		return biblioteca.getNome()+ " salvo com sucesso";
+		return biblioteca.getNome() + " salvo com sucesso";
 	}
 
 	public String update(long id, Biblioteca biblioteca) {
-		
+
 		lista = this.listAll();
 
-		if(lista != null)
-			for(int i=0; i<lista.size(); i++) {
-				if(lista.get(i).getId() == id) {
+		if (lista != null)
+			for (int i = 0; i < lista.size(); i++) {
+				if (lista.get(i).getId() == id) {
 					lista.set(i, biblioteca);
-					return	biblioteca.getNome()+ " alterado com sucesso";
+					return biblioteca.getNome() + " alterado com sucesso";
 				}
 			}
 
 		return "Nao ha nada para alterar";
 	}
-	public List<Biblioteca> listAll(){
+
+	public List<Biblioteca> listAll() {
 
 		Biblioteca biblioteca = new Biblioteca(1, "ABCDEF", "7532478");
 		Biblioteca biblioteca2 = new Biblioteca(2, "OSFDG", "6453563");
@@ -46,14 +45,14 @@ public class BibliotecaService {
 		return lista;
 
 	}
-	
+
 	public Biblioteca findById(long idBiblioteca) {
 
 		lista = this.listAll();
 
-		if(lista != null)
-			for(int i=0; i<lista.size(); i++) {
-				if(lista.get(i).getId() == idBiblioteca) {
+		if (lista != null)
+			for (int i = 0; i < lista.size(); i++) {
+				if (lista.get(i).getId() == idBiblioteca) {
 					return lista.get(i);
 				}
 			}
@@ -64,12 +63,11 @@ public class BibliotecaService {
 
 	public boolean delete(long idBiblioteca) {
 
-		
 		lista = this.listAll();
 
-		if(lista != null)
-			for(Biblioteca biblioteca : this.lista) {
-				if(biblioteca.getId() == idBiblioteca) {
+		if (lista != null)
+			for (Biblioteca biblioteca : this.lista) {
+				if (biblioteca.getId() == idBiblioteca) {
 					this.lista.remove(biblioteca);
 					return true;
 				}
@@ -79,5 +77,4 @@ public class BibliotecaService {
 
 	}
 
-	
 }
