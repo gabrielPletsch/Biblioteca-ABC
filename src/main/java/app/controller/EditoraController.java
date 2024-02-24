@@ -1,8 +1,12 @@
 package app.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -17,37 +21,83 @@ import app.service.EditoraService;
 @RequestMapping("/api/Editora")
 public class EditoraController {
 
-		@Autowired
-		private EditoraService editoraService;
+	@Autowired
+	private EditoraService editoraService;
 
-		@PostMapping("/save")
-		public ResponseEntity<String> save(@RequestBody Editora editora) {
+	@PostMapping("/save")
+	public ResponseEntity<String> save(@RequestBody Editora editora) {
 
-			try {
+		try {
 
-				String mensagem = this.editoraService.Save(editora);
-				return new ResponseEntity<String>(mensagem, HttpStatus.CREATED);
+			String mensagem = this.editoraService.Save(editora);
+			return new ResponseEntity<String>(mensagem, HttpStatus.CREATED);
 
-			} catch (Exception e) {
+		} catch (Exception e) {
 
-				return new ResponseEntity<String>("Deu esse erro aqui: " + e.getMessage(), HttpStatus.BAD_REQUEST);
-			}
+			return new ResponseEntity<String>("Deu esse erro aqui: " + e.getMessage(), HttpStatus.BAD_REQUEST);
+		}
+	}
+
+	@PutMapping("/update/{idEditora}")
+	public ResponseEntity<String> update(@RequestBody Editora editora, @PathVariable int id) {
+
+		try {
+
+			String mensagem = this.editoraService.update(id, editora);
+			return new ResponseEntity<String>(mensagem, HttpStatus.CREATED);
+
+		} catch (Exception e) {
+
+			return new ResponseEntity<String>("Erro: " + e.getMessage(), HttpStatus.BAD_REQUEST);
+
 		}
 
-		@PutMapping("/update/{idUpdate}")
-		public ResponseEntity<String> update(@RequestBody Editora editora, @PathVariable int id) {
+	}
 
-			try {
+	@GetMapping("/listAll")
+	public ResponseEntity<List<Editora>> listAll() {
 
-				String mensagem = this.editoraService.update(id, editora);
-				return new ResponseEntity<String>(mensagem, HttpStatus.CREATED);
+		try {
 
-			} catch (Exception e) {
+			List<Editora> lista = this.editoraService.listAll();
+			return new ResponseEntity<>(lista, HttpStatus.CREATED);
 
-				return new ResponseEntity<String>("Erro: " + e.getMessage(), HttpStatus.BAD_REQUEST);
+		} catch (Exception e) {
 
-			}
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 
 		}
+
+	}
+
+	@GetMapping("/findById/{idEditora}")
+	public ResponseEntity<Editora> findById(@PathVariable long idEditora) {
+
+		try {
+
+			Editora editora = this.editoraService.findById(idEditora);
+			return new ResponseEntity<>(editora, HttpStatus.OK);
+
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+		}
+
+	}
+
+	@DeleteMapping("/delete/{idEditora}")
+	public ResponseEntity<String> delete(@PathVariable long idEditora) {
+
+		try {
+
+			if (this.editoraService.delete(idEditora)) {
+				return new ResponseEntity<String>("Apagado", HttpStatus.OK);
+			} else
+				return new ResponseEntity<String>("Nao encontrado", HttpStatus.NOT_FOUND);
+
+		} catch (Exception e) {
+			return new ResponseEntity<String>("Erro: " + e.getMessage(), HttpStatus.BAD_REQUEST);
+		}
+
+	}
 
 }
