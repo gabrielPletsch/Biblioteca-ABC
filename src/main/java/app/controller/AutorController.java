@@ -71,7 +71,7 @@ public class AutorController {
 
 	}
 
-	@GetMapping("/findById/{idCarro}")
+	@GetMapping("/findById/{idAutor}")
 	public ResponseEntity<Autor> findById(@PathVariable long idAutor) {
 
 		try {
