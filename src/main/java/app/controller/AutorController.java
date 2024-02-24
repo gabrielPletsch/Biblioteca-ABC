@@ -40,7 +40,7 @@ public class AutorController {
 
 	}
 
-	@PutMapping("/update/{idAutor}")
+	@PutMapping("/update/{id}")
 	public ResponseEntity<String> update(@RequestBody Autor autor, @PathVariable int id) {
 
 		try {
