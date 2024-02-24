@@ -18,7 +18,7 @@ import app.entity.Livro;
 import app.service.LivroService;
 
 @RestController
-@RequestMapping("/api/livro")
+@RequestMapping("/api/Livro")
 public class LivroController {
 
 	@Autowired

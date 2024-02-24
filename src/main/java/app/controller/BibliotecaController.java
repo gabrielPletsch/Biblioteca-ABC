@@ -18,8 +18,7 @@ import app.entity.Biblioteca;
 import app.service.BibliotecaService;
 
 @RestController
-@RequestMapping("/api/biblioteca")
-
+@RequestMapping("/api/Biblioteca")
 public class BibliotecaController {
 
 	@Autowired
