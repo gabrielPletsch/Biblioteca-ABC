@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import app.entity.Editora;
-import app.entity.Livro;
 
 public class EditoraService {
 	List<Editora> lista = new ArrayList<>();
