@@ -88,15 +88,12 @@ public class LivroController {
 
 		try {
 
-			if (this.livroService.delete(idLivro)) {
-				return new ResponseEntity<String>("Apagado", HttpStatus.OK);
-			} else
-				return new ResponseEntity<String>("Nao encontrado", HttpStatus.NOT_FOUND);
+			String mensagem = this.livroService.delete(idLivro);
+			return new ResponseEntity<>(mensagem, HttpStatus.OK);
 
 		} catch (Exception e) {
-			return new ResponseEntity<String>("Erro: " + e.getMessage(), HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<String>("Deu esse erro aqui: " + e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
 
 	}
-
 }

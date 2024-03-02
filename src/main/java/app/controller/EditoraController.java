@@ -29,26 +29,12 @@ public class EditoraController {
 
 		try {
 
-			String mensagem = this.editoraService.Save(editora);
-			return new ResponseEntity<String>(mensagem, HttpStatus.CREATED);
+			String mensagem = this.editoraService.save(editora);
+			return new ResponseEntity<String>(mensagem, HttpStatus.OK);
 
 		} catch (Exception e) {
 
 			return new ResponseEntity<String>("Deu esse erro aqui: " + e.getMessage(), HttpStatus.BAD_REQUEST);
-		}
-	}
-
-	@PutMapping("/update/{idEditora}")
-	public ResponseEntity<String> update(@RequestBody Editora editora, @PathVariable int id) {
-
-		try {
-
-			String mensagem = this.editoraService.update(id, editora);
-			return new ResponseEntity<String>(mensagem, HttpStatus.CREATED);
-
-		} catch (Exception e) {
-
-			return new ResponseEntity<String>("Erro: " + e.getMessage(), HttpStatus.BAD_REQUEST);
 
 		}
 
@@ -84,20 +70,33 @@ public class EditoraController {
 
 	}
 
+	@PutMapping("update/{idEditora}")
+	public ResponseEntity<String> update(@RequestBody Editora editora, @PathVariable long idEditora) {
+
+		try {
+
+			String mensagem = this.editoraService.update(idEditora, editora);
+			return new ResponseEntity<String>(mensagem, HttpStatus.OK);
+
+		} catch (Exception e) {
+
+			return new ResponseEntity<String>("Deu esse erro aqui: " + e.getMessage(), HttpStatus.BAD_REQUEST);
+
+		}
+
+	}
+
 	@DeleteMapping("/delete/{idEditora}")
 	public ResponseEntity<String> delete(@PathVariable long idEditora) {
 
 		try {
 
-			if (this.editoraService.delete(idEditora)) {
-				return new ResponseEntity<String>("Apagado", HttpStatus.OK);
-			} else
-				return new ResponseEntity<String>("Nao encontrado", HttpStatus.NOT_FOUND);
+			String mensagem = this.editoraService.delete(idEditora);
+			return new ResponseEntity<>(mensagem, HttpStatus.OK);
 
 		} catch (Exception e) {
-			return new ResponseEntity<String>("Erro: " + e.getMessage(), HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<String>("Deu esse erro aqui: " + e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
 
 	}
-
 }

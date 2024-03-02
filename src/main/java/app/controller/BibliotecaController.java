@@ -87,16 +87,16 @@ public class BibliotecaController {
 	}
 
 	@DeleteMapping("/delete/{idBiblioteca}")
-	public ResponseEntity<String> delete(@PathVariable long idBiblioteca){
-		
+	public ResponseEntity<String> delete(@PathVariable long idBiblioteca) {
+
 		try {
-			
+
 			String mensagem = this.bibliotecaService.delete(idBiblioteca);
 			return new ResponseEntity<>(mensagem, HttpStatus.OK);
-			
+
 		} catch (Exception e) {
-			return new ResponseEntity<String>("Deu esse erro aqui: "+e.getMessage(), HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<String>("Deu esse erro aqui: " + e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
-		
+
 	}
 }
