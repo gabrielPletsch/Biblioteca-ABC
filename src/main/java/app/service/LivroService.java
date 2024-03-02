@@ -1,44 +1,47 @@
 package app.service;
 
-import org.hibernate.mapping.List;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import app.entity.Editora;
 import app.entity.Livro;
 import app.repository.LivroRepository;
 
 @Service
 public class LivroService {
 
-	@Autowired
-	private LivroRepository livroRepository;
+List<Livro> lista = new ArrayList<>();
 
-	public String save(Livro livro) {
-		this.livroRepository.save(livro);
-		return livro.getTitulo() + " editora salvo com sucesso";
-	}
+    @Autowired
+    private LivroRepository livroRepository;
 
-	public List<Livro> listAll() {
-		return this.livroRepository.findAll();
-	}
+    public String save (Livro livro) {
+        this.livroRepository.save(livro);
+        return livro.getTitulo() + " editora salvo com sucesso";
+    }
 
-	public Livro findById(long idLivro) {
+    public List<Livro> listAll(){
+        return this.livroRepository.findAll();
+    }
 
-		Livro livro = this.livroRepository.findById(idLivro).get();
-		return livro;
+    public Livro findById(long idLivro) {
 
-	}
+        Livro livro = this.livroRepository.findById(idLivro).get();
+        return livro;
 
-	public String update(long idLivro, Livro livro) {
-		livro.setIdLivro(idLivro);
-		this.livroRepository.save(livro);
-		return livro.getTitulo() + " Editora atualizada";
-	}
+    }
 
-	public String delete(long idLivro) {
-		this.livroRepository.deleteById(idLivro);
-		return "Editora deletada";
-	}
+    public String update(long idLivro, Livro livro) {
+        livro.setIdLivro(idLivro);
+        this.livroRepository.save(livro);
+        return livro.getTitulo()+ " Editora atualizada";
+    }
+
+    public String delete(long idLivro) {
+        this.livroRepository.deleteById(idLivro);
+        return "Editora deletada";
+    }
 
 }

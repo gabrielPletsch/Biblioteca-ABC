@@ -14,7 +14,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
 @Getter
 @Setter
 @AllArgsConstructor
@@ -22,19 +21,19 @@ import lombok.Setter;
 @Entity
 
 public class Livro {
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	long idLivro;
-	
-	private String issn;
-	@NotNull
-	private String titulo;
-	private String sinopse;
-	private int ano;
-	private int num_pag;
-	
-	@ManyToOne (cascade = CascadeType.ALL)
-	@JsonIgnoreProperties("livro")
-	private Biblioteca biblioteca;
-	
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private long idLivro;
+
+    private String issn;
+    @NotNull
+    private String titulo;
+    private String sinopse;
+    private int ano;
+    private int num_pag;
+
+    @ManyToOne (cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("livro")
+    private Livro livro;
+
 }
