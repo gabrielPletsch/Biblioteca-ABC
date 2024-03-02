@@ -1,7 +1,5 @@
 package app.service;
 
-import java.util.ArrayList;
-
 import org.hibernate.mapping.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,9 +10,6 @@ import app.repository.LivroRepository;
 
 @Service
 public class LivroService {
-
-
-	List<Livro> lista = new ArrayList<>();
 
 	@Autowired
 	private LivroRepository livroRepository;

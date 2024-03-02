@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import app.entity.Editora;
 import app.entity.Livro;
 import app.service.LivroService;
 
@@ -67,6 +68,7 @@ public class LivroController {
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 
 		}
+
 	}
 
 	@GetMapping("/findById/{idLivro}")
