@@ -10,6 +10,7 @@ import app.repository.BibliotecaRepository;
 
 @Service
 public class BibliotecaService {
+<<<<<<< HEAD
 	
 	@Autowired
 	private BibliotecaRepository bibliotecaRepository;
@@ -31,6 +32,26 @@ public class BibliotecaService {
 		return biblioteca.getNome() + " registro atualizado";
 	}
 
+=======
+
+	@Autowired
+	private BibliotecaRepository bibliotecaRepository;
+
+	public String save(Biblioteca biblioteca) {
+		this.bibliotecaRepository.save(biblioteca);
+		return biblioteca.getNome() + " salva com sucesso";
+	}
+
+	public List<Biblioteca> listAll() {
+		return this.bibliotecaRepository.findAll();
+	}
+
+	public String update(long id, Biblioteca biblioteca) {
+		biblioteca.setId(id);
+		this.bibliotecaRepository.save(biblioteca);
+		return biblioteca.getNome() + " registro atualizado";
+	}
+>>>>>>> Develop
 
 	public Biblioteca findById(long idBiblioteca) {
 
@@ -42,10 +63,16 @@ public class BibliotecaService {
 	public String delete(long idBiblioteca) {
 
 		this.bibliotecaRepository.deleteById(idBiblioteca);
+<<<<<<< HEAD
 		return  "Registro deletado";
 
 	}
 
 
 
+=======
+		return "Registro deletado";
+
+	}
+>>>>>>> Develop
 }

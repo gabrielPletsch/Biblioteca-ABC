@@ -1,30 +1,30 @@
 package app.service;
 
+import java.util.ArrayList;
+
 import org.hibernate.mapping.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import app.entity.Editora;
 import app.entity.Livro;
 import app.repository.LivroRepository;
 
 @Service
 public class LivroService {
 
+
+	List<Livro> lista = new ArrayList<>();
+
 	@Autowired
 	private LivroRepository livroRepository;
 
 	public String save(Livro livro) {
 		this.livroRepository.save(livro);
-		return livro.getTitulo()+ " Salvo com sucesso";
+		return livro.getTitulo() + " editora salvo com sucesso";
 	}
 
-	public String update(long id, Livro livro) {
-		livro.setId(id);
-		this.livroRepository.save(livro);
-		return "Livro não encontrado para alterar";
-	}
-
-	public List<livro> listAll(){
+	public List<Livro> listAll() {
 		return this.livroRepository.findAll();
 	}
 
@@ -35,10 +35,15 @@ public class LivroService {
 
 	}
 
+	public String update(long idLivro, Livro livro) {
+		livro.setIdLivro(idLivro);
+		this.livroRepository.save(livro);
+		return livro.getTitulo() + " Editora atualizada";
+	}
+
 	public String delete(long idLivro) {
 		this.livroRepository.deleteById(idLivro);
-		return "Não encontrado para deletar";
-
+		return "Editora deletada";
 	}
+
 }
-	
