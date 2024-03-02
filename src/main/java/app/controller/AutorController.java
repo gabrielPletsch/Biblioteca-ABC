@@ -86,18 +86,16 @@ public class AutorController {
 	}
 
 	@DeleteMapping("/delete/{idAutor}")
-	public ResponseEntity<String> delete(@PathVariable long idAutor) {
-
+	public ResponseEntity<String> delete(@PathVariable long idAutor){
+		
 		try {
-
-			if (this.autorService.delete(idAutor)) {
-				return new ResponseEntity<String>("Apagado", HttpStatus.OK);
-			} else
-				return new ResponseEntity<String>("Nao encontrado", HttpStatus.NOT_FOUND);
-
+			
+			String mensagem = this.autorService.delete(idAutor);
+			return new ResponseEntity<>(mensagem, HttpStatus.OK);
+			
 		} catch (Exception e) {
-			return new ResponseEntity<String>("Erro: " + e.getMessage(), HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<String>("Deu esse erro aqui: "+e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
-
+		
 	}
 }

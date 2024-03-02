@@ -1,33 +1,38 @@
 package app.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.util.List;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
-public class Autor {
 
+public class Autor {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private long idAutor;
+	@NotNull(message = "O nome do autor nao deve ser nulo")
+	private String nomeAutor;
+	private String cpfAutor;
+	private int idadeAutor;
+
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable (name =  "livro")
+	private List<Livro> livro;
 	
-	@NotNull(message = "Campo Nome e CPF não pode ser nulo")
-	private String nome;
-	private String cpf;
-	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JsonIgnoreProperties("Autor")
-	private int idade;
 }
