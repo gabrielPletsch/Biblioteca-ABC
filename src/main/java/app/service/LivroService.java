@@ -63,7 +63,7 @@ public class LivroService {
 		return null;
 	}
 
-	public boolean delete(long idLivro) {
+	public String delete(long idLivro) {
 
 		lista = this.listAll();
 
@@ -80,4 +80,3 @@ public class LivroService {
 	}
 
 }
-	

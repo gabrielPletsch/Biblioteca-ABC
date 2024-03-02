@@ -10,17 +10,16 @@ import app.repository.AutorRepository;
 
 @Service
 public class AutorService {
-	
+
 	@Autowired
 	private AutorRepository autorRepository;
-	
-	public String save (Autor autor) {
+
+	public String save(Autor autor) {
 		this.autorRepository.save(autor);
 		return autor.getNomeAutor() + " autor salvo com sucesso";
 	}
-	
-	
-	public List<Autor> listAll(){
+
+	public List<Autor> listAll() {
 		return this.autorRepository.findAll();
 	}
 
@@ -30,21 +29,17 @@ public class AutorService {
 		return autor;
 
 	}
-	
-	
-	
+
 	public String update(long idAutor, Autor autor) {
 		autor.setIdAutor(idAutor);
 		this.autorRepository.save(autor);
 		return autor.getNomeAutor() + " registro atualizado";
 	}
-	
-	
+
 	public String delete(long idAutor) {
 
 		this.autorRepository.deleteById(idAutor);
-		return  "Registro deletado";
+		return "Registro deletado";
 
 	}
 }
-

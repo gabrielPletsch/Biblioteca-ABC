@@ -22,7 +22,7 @@ import lombok.Setter;
 @Entity
 
 public class Autor {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long idAutor;
@@ -32,7 +32,7 @@ public class Autor {
 	private int idadeAutor;
 
 	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable (name =  "livro")
+	@JoinTable(name = "livro")
 	private List<Livro> livro;
-	
+
 }

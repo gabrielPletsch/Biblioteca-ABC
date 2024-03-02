@@ -14,12 +14,12 @@ import lombok.Setter;
 @NoArgsConstructor
 
 public class Editora {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	long idEditora;
 	String nomeEditora;
 	String enderecoEditora;
 	String telefoneEditora;
-	
+
 }

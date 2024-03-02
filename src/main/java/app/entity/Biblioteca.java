@@ -1,6 +1,5 @@
 package app.entity;
 
-
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -16,7 +15,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@AllArgsConstructor
+@AllArgsConstructors
 @NoArgsConstructor
 @Entity
 
@@ -27,7 +26,7 @@ public class Biblioteca {
 	@NotNull
 	private String nome;
 	private String telefone;
-	
+
 	@OneToMany(mappedBy = "biblioteca")
 	private List<Livro> livro;
 }
