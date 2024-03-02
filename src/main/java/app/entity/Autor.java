@@ -9,6 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,7 +23,7 @@ import lombok.Setter;
 @Entity
 
 public class Autor {
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long idAutor;
@@ -31,8 +32,6 @@ public class Autor {
 	private String cpfAutor;
 	private int idadeAutor;
 
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "livro")
-	private List<Livro> livro;
-
+	
+	
 }
