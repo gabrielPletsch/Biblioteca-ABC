@@ -20,14 +20,13 @@ import lombok.Setter;
 @Entity
 
 public class Biblioteca {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	@NotNull
 	private String nome;
 	private String telefone;
-
+	
 	@OneToMany(mappedBy = "biblioteca")
 	private List<Livro> livro;
 }
